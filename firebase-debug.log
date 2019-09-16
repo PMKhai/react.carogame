@@ -1,0 +1,47 @@
+[debug] [2019-09-16T13:56:16.357Z] ----------------------------------------------------------------------
+[debug] [2019-09-16T13:56:16.393Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\DELL\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2019-09-16T13:56:16.393Z] CLI Version:   7.3.2
+[debug] [2019-09-16T13:56:16.393Z] Platform:      win32
+[debug] [2019-09-16T13:56:16.394Z] Node Version:  v10.16.2
+[debug] [2019-09-16T13:56:16.396Z] Time:          Mon Sep 16 2019 20:56:16 GMT+0700 (Indochina Time)
+[debug] [2019-09-16T13:56:16.396Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-09-16T13:56:16.421Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-09-16T13:56:16.428Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Năm 4 - HK1\Web advance\Cá nhân\bai-2
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project.
+[debug] [2019-09-16T13:57:22.011Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-09-16T13:57:22.011Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-09-16T13:57:22.430Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-16T13:57:22.441Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects  
+
+[debug] [2019-09-16T13:57:24.146Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-16T13:57:24.150Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.6343133837386849472  
+ 
+[debug] [2019-09-16T13:57:25.607Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-16T13:57:25.611Z] The project cannot be created because you have exceeded your allotted project quota.
+[debug] [2019-09-16T13:57:25.836Z] FirebaseError: The project cannot be created because you have exceeded your allotted project quota.
+    at OperationPoller.<anonymous> (C:\Users\DELL\AppData\Roaming\npm\node_modules\firebase-tools\lib\operation-poller.js:31:23)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\DELL\AppData\Roaming\npm\node_modules\firebase-tools\lib\operation-poller.js:4:58)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: Failed to create Google Cloud project. See firebase-debug.log for more info.
