@@ -51,7 +51,7 @@ class Board extends Component {
 
     return (
       <div>
-        <div>
+        <div className="head-board">
           <div className="status">{status}</div>
           <div className="game-info">
             <button onClick={() => this.handleClickPlayAgain()}>
@@ -570,8 +570,8 @@ const calculateWinner = (squares, index) => {
       checkRow &&
       (squares[a - 1] === squares[a] ||
         squares[a - 1] === null ||
-        squares[a - 1] === undefined) &&
-      (squares[e + 1] === squares[a] ||
+        squares[a - 1] === undefined||
+      squares[e + 1] === squares[a] ||
         squares[e + 1] === null ||
         squares[e + 1] === undefined)
     ) {
@@ -592,8 +592,8 @@ const calculateWinner = (squares, index) => {
       squares[cc] === squares[dd] &&
       squares[dd] === squares[ee] &&
       checkRow &&
-      (squares[aa - 20] === squares[aa] || squares[aa - 20] === null) &&
-      (squares[ee + 20] === squares[aa] ||
+      (squares[aa - 20] === squares[aa] || squares[aa - 20] === null||
+      squares[ee + 20] === squares[aa] ||
         squares[ee + 20] === null ||
         squares[ee + 20] === undefined)
     ) {
@@ -616,8 +616,8 @@ const calculateWinner = (squares, index) => {
       checkRow &&
       (squares[aaa - 20 - 1] === squares[aaa] ||
         squares[aaa - 20 - 1] === null ||
-        squares[aaa - 20 - 1] === undefined) &&
-      (squares[eee + 20 + 1] === squares[aaa] ||
+        squares[aaa - 20 - 1] === undefined||
+      squares[eee + 20 + 1] === squares[aaa] ||
         squares[eee + 20 + 1] === null ||
         squares[eee + 20 + 1] === undefined)
     ) {
@@ -640,8 +640,8 @@ const calculateWinner = (squares, index) => {
       checkRow &&
       (squares[aaaa + 20 - 1] === squares[aaaa] ||
         squares[aaaa + 20 - 1] === null ||
-        squares[aaaa + 20 - 1] === undefined) &&
-      (squares[eeee - 20 + 1] === squares[aaaa] ||
+        squares[aaaa + 20 - 1] === undefined ||
+      squares[eeee - 20 + 1] === squares[aaaa] ||
         squares[eeee - 20 + 1] === null ||
         squares[eeee - 20 + 1] === undefined)
     ) {
