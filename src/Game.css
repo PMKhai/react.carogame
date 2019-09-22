@@ -62,3 +62,8 @@ ul {
   justify-content: center;
   height: 30px;
 }
+
+.win {
+  background-color: black;
+  color: white;
+}
