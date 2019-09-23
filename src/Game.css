@@ -67,3 +67,12 @@ ul {
   background-color: black;
   color: white;
 }
+
+.bold {
+  font-weight: bold;
+  color: rgb(139, 70, 70);
+}
+
+.w-150 {
+  width: 150px;
+}

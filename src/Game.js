@@ -17,7 +17,9 @@ class Game extends Component {
       ],
       xIsNext: true,
       stepNumber: 0,
-      winner: null
+      winner: null,
+      result: null,
+      display: null
     };
   }
 
@@ -25,7 +27,7 @@ class Game extends Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    console.log(this.state.winner);
+
     if (this.state.winner || squares[i]) {
       return;
     }
@@ -40,20 +42,21 @@ class Game extends Component {
         }
       ]),
       xIsNext: !this.state.xIsNext,
-      stepNumber: history.length
+      stepNumber: history.length,
+      display: null
     });
 
     const winner = calculateWinner(squares, i);
-    console.log(winner);
     if (winner) {
-      this.setState({ winner: winner[0] });
+      this.setState({ winner: winner[0], result: winner[1] });
     }
   };
 
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: step % 2 === 0
+      xIsNext: step % 2 === 0,
+      display: step
     });
   }
 
@@ -68,7 +71,9 @@ class Game extends Component {
       ],
       xIsNext: true,
       stepNumber: 0,
-      winner: null
+      winner: null,
+      result: null,
+      display: null
     });
   };
 
@@ -78,14 +83,18 @@ class Game extends Component {
     const squares = current.squares;
     const winner = this.state.winner;
     const xIsNext = this.state.xIsNext;
+    const result = this.state.result;
 
     const moves = history.map((step, move) => {
       const desc = move
         ? `Go to move #${step.x}:${step.y}`
         : "Go to game start";
+      const display = this.state.display === move ? "bold w-150" : "w-150";
       return (
-        <li>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        <li key={move}>
+          <button className={display} onClick={() => this.jumpTo(move)}>
+            {desc}
+          </button>
         </li>
       );
     });
@@ -104,14 +113,17 @@ class Game extends Component {
             onClick={i => this.handleClick(i)}
             onClickPlayAgain={() => this.handleClickPlayAgain()}
             squares={squares}
-            winner={winner}
+            result={result}
           />
         </div>
         <div className="game-info">
           <div>{status}</div>
           <ol>
-            <button onClick={() => this.handleClickPlayAgain()}>
-              Chơi lại
+            <button
+              className="w-150"
+              onClick={() => this.handleClickPlayAgain()}
+            >
+              Play again!
             </button>
             {moves}
           </ol>
