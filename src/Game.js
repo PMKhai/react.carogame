@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
-import Board from "./Board";
-import "./Game.css";
+import Board from './Board';
+import './Game.css';
 
 class Game extends Component {
   constructor(props) {
@@ -12,14 +12,14 @@ class Game extends Component {
         {
           squares: Array(400).fill(null),
           x: null,
-          y: null
-        }
+          y: null,
+        },
       ],
       xIsNext: true,
       stepNumber: 0,
       winner: null,
       result: null,
-      display: null
+      display: null,
     };
   }
 
@@ -31,19 +31,19 @@ class Game extends Component {
     if (this.state.winner || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? "X" : "O";
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
 
     this.setState({
       history: history.concat([
         {
           squares: squares,
           x: Math.floor(i / 20 + 1),
-          y: (i % 20) + 1
-        }
+          y: (i % 20) + 1,
+        },
       ]),
       xIsNext: !this.state.xIsNext,
       stepNumber: history.length,
-      display: null
+      display: null,
     });
 
     const winner = calculateWinner(squares, i);
@@ -56,7 +56,7 @@ class Game extends Component {
     this.setState({
       stepNumber: step,
       xIsNext: step % 2 === 0,
-      display: step
+      display: step,
     });
   }
 
@@ -66,14 +66,14 @@ class Game extends Component {
         {
           squares: Array(400).fill(null),
           x: null,
-          y: null
-        }
+          y: null,
+        },
       ],
       xIsNext: true,
       stepNumber: 0,
       winner: null,
       result: null,
-      display: null
+      display: null,
     });
   };
 
@@ -88,8 +88,8 @@ class Game extends Component {
     const moves = history.map((step, move) => {
       const desc = move
         ? `Go to move #${step.x}:${step.y}`
-        : "Go to game start";
-      const display = this.state.display === move ? "bold w-150" : "w-150";
+        : 'Go to game start';
+      const display = this.state.display === move ? 'bold w-150' : 'w-150';
       return (
         <li key={move}>
           <button className={display} onClick={() => this.jumpTo(move)}>
@@ -103,7 +103,7 @@ class Game extends Component {
     if (winner) {
       status = `Winner: ${winner}`;
     } else {
-      status = "Next player: " + (xIsNext ? "X" : "O");
+      status = 'Next player: ' + (xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -144,7 +144,7 @@ const calculateWinner = (squares, index) => {
       index + 1,
       index + 2,
       index + 3,
-      index + 4
+      index + 4,
     ],
     [
       index - 80,
@@ -155,7 +155,7 @@ const calculateWinner = (squares, index) => {
       index + 20,
       index + 40,
       index + 60,
-      index + 80
+      index + 80,
     ],
     [
       index - 80 - 4,
@@ -166,7 +166,7 @@ const calculateWinner = (squares, index) => {
       index + 20 + 1,
       index + 40 + 2,
       index + 60 + 3,
-      index + 80 + 4
+      index + 80 + 4,
     ],
     [
       index + 80 - 4,
@@ -177,8 +177,8 @@ const calculateWinner = (squares, index) => {
       index - 20 + 1,
       index - 40 + 2,
       index - 60 + 3,
-      index - 80 + 4
-    ]
+      index - 80 + 4,
+    ],
   ];
 
   let result = [];
@@ -188,7 +188,7 @@ const calculateWinner = (squares, index) => {
       lines[0][i + 1],
       lines[0][i + 2],
       lines[0][i + 3],
-      lines[0][i + 4]
+      lines[0][i + 4],
     ];
     const checkRow = checkRim([a, b, c, d]);
     if (
@@ -215,7 +215,7 @@ const calculateWinner = (squares, index) => {
       lines[1][i + 1],
       lines[1][i + 2],
       lines[1][i + 3],
-      lines[1][i + 4]
+      lines[1][i + 4],
     ];
     if (
       squares[aa] &&
@@ -240,7 +240,7 @@ const calculateWinner = (squares, index) => {
       lines[2][i + 1],
       lines[2][i + 2],
       lines[2][i + 3],
-      lines[2][i + 4]
+      lines[2][i + 4],
     ];
     if (
       squares[aaa] &&
@@ -266,7 +266,7 @@ const calculateWinner = (squares, index) => {
       lines[3][i + 1],
       lines[3][i + 2],
       lines[3][i + 3],
-      lines[3][i + 4]
+      lines[3][i + 4],
     ];
     if (
       squares[aaaa] &&
