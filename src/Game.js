@@ -1,6 +1,4 @@
-// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
-// eslint-disable-next-line no-unused-vars
 import Board from './Board';
 import './Game.css';
 

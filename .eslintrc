@@ -5,7 +5,10 @@
         "es6": true
     },
     "plugins": ["import"],
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 2018,
