@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
 import Square from './Square';
 import './Game.css';
@@ -17,8 +16,8 @@ class Board extends Component {
   };
 
   renderSquares = n => {
-    let squares = [];
-    for (let i = n; i < n + 20; i++) {
+    const squares = [];
+    for (let i = n; i < n + 20; i += 1) {
       squares.push(this.renderSquare(i));
     }
     return squares;
@@ -33,7 +32,7 @@ class Board extends Component {
   };
 
   renderBoad = n => {
-    let rows = [];
+    const rows = [];
     for (let i = 0; i <= n; i += 20) {
       rows.push(this.renderRows(i));
     }
@@ -47,7 +46,7 @@ class Board extends Component {
 
 const checkValueExistInResultArray = (array, value) => {
   if (array === null) return false;
-  for (let i = 0; i < array.length; i++) if (array[i] === value) return true;
+  for (let i = 0; i < array.length; i += 1) if (array[i] === value) return true;
   return false;
 };
 

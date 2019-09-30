@@ -34,7 +34,7 @@ class Game extends Component {
     this.setState({
       history: history.concat([
         {
-          squares: squares,
+          squares,
           x: Math.floor(i / 20 + 1),
           y: (i % 20) + 1,
         },
@@ -101,7 +101,7 @@ class Game extends Component {
     if (winner) {
       status = `Winner: ${winner}`;
     } else {
-      status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+      status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
 
     return (
