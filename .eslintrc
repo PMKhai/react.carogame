@@ -24,7 +24,7 @@
         "import/first": "error",
         "consistent-return": "off",
         "flowtype/no-types-missing-file-annotation": "off",
-        "import/extensions": "off",
+        "import/extensions": 1,
         "import/no-unresolved": "off",
         "import/no-named-as-default": "off",
         "import/no-named-as-default-member": "off",
@@ -50,7 +50,8 @@
         "no-underscore-dangle": 1,
         "no-unused-expressions": "error",
         "prefer-promise-reject-errors": "off",
-        "linebreak-style": 0,
-        "arrow-parens": "off"
+        "arrow-parens": "off",
+        "linebreak-style": "off",
+        "operator-linebreak": "off"
     }
 }

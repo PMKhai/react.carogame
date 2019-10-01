@@ -21,15 +21,20 @@ class Game extends Component {
     };
   }
 
-  handleClick = i => {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
+  handleClick = (i) => {
+    const { stepNumber } = this.state;
+    const { history } = this.state;
+    const { winner } = this.state;
+    const { xIsNext } = this.state;
+
+    const historys = history.slice(0, stepNumber + 1);
+    const current = historys[historys.length - 1];
     const squares = current.squares.slice();
 
-    if (this.state.winner || squares[i]) {
+    if (winner || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = xIsNext ? 'X' : 'O';
 
     this.setState({
       history: history.concat([
@@ -39,14 +44,14 @@ class Game extends Component {
           y: (i % 20) + 1,
         },
       ]),
-      xIsNext: !this.state.xIsNext,
+      xIsNext: !xIsNext,
       stepNumber: history.length,
       display: null,
     });
 
-    const winner = calculateWinner(squares, i);
-    if (winner) {
-      this.setState({ winner: winner[0], result: winner[1] });
+    const winners = calculateWinner(squares, i);
+    if (winners) {
+      this.setState({ winner: winners[0], result: winners[1] });
     }
   };
 
@@ -76,21 +81,28 @@ class Game extends Component {
   };
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
-    const squares = current.squares;
-    const winner = this.state.winner;
-    const xIsNext = this.state.xIsNext;
-    const result = this.state.result;
+    const { history } = this.state;
+    const { stepNumber } = this.state;
+    const { winner } = this.state;
+    const { xIsNext } = this.state;
+    const { result } = this.state;
+    const { display } = this.state;
+    const current = history[stepNumber];
+    const { squares } = current;
 
     const moves = history.map((step, move) => {
       const desc = move
         ? `Go to move #${step.x}:${step.y}`
         : 'Go to game start';
-      const display = this.state.display === move ? 'bold w-150' : 'w-150';
+      const displays = display === move ? 'bold w-150' : 'w-150';
+      const key = move + 1;
       return (
-        <li key={move}>
-          <button className={display} onClick={() => this.jumpTo(move)}>
+        <li key={key}>
+          <button
+            type="button"
+            className={displays}
+            onClick={() => this.jumpTo(move)}
+          >
             {desc}
           </button>
         </li>
@@ -108,7 +120,7 @@ class Game extends Component {
       <div className="game">
         <div className="game-board">
           <Board
-            onClick={i => this.handleClick(i)}
+            onClick={(i) => this.handleClick(i)}
             onClickPlayAgain={() => this.handleClickPlayAgain()}
             squares={squares}
             result={result}
@@ -118,6 +130,7 @@ class Game extends Component {
           <div>{status}</div>
           <ol>
             <button
+              type="button"
               className="w-150"
               onClick={() => this.handleClickPlayAgain()}
             >
@@ -179,8 +192,8 @@ const calculateWinner = (squares, index) => {
     ],
   ];
 
-  let result = [];
-  for (let i = 0; i < 9; i++) {
+  const result = [];
+  for (let i = 0; i < 9; i += 1) {
     const [a, b, c, d, e] = [
       lines[0][i],
       lines[0][i + 1],
@@ -288,7 +301,7 @@ const calculateWinner = (squares, index) => {
   return null;
 };
 
-const checkRim = arr => {
+const checkRim = (arr) => {
   if (arr[0] % 10 === 9 && Math.floor(arr[0] / 10) % 2 === 1) return false;
   if (arr[1] % 10 === 9 && Math.floor(arr[1] / 10) % 2 === 1) return false;
   if (arr[2] % 10 === 9 && Math.floor(arr[2] / 10) % 2 === 1) return false;

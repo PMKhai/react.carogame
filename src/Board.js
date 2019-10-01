@@ -4,12 +4,14 @@ import './Game.css';
 
 class Board extends Component {
   renderSquare = i => {
-    const result = checkValueExistInResultArray(this.props.result, i);
+    const { result, onClick, squares } = this.props;
+
+    const results = checkValueExistInResultArray(result, i);
     return (
       <Square
-        value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
-        win={result}
+        value={squares[i]}
+        onClick={() => onClick(i)}
+        win={results}
         key={i}
       />
     );
@@ -23,13 +25,11 @@ class Board extends Component {
     return squares;
   };
 
-  renderRows = i => {
-    return (
-      <div className="board-row" key={i}>
-        {this.renderSquares(i)}
-      </div>
-    );
-  };
+  renderRows = i => (
+    <div className="board-row" key={i}>
+      {this.renderSquares(i)}
+    </div>
+  );
 
   renderBoad = n => {
     const rows = [];
