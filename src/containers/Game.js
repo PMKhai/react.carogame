@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Board from '../components/Board';
 import './Game.css';
+import * as actions from '../actions';
 
 class Game extends Component {
   constructor(props) {
@@ -115,7 +117,6 @@ class Game extends Component {
     } else {
       status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
-
     return (
       <div className="game">
         <div className="game-board">
@@ -132,7 +133,7 @@ class Game extends Component {
             <button
               type="button"
               className="w-150"
-              onClick={() => this.handleClickPlayAgain()}
+              onClick={() => this.props.handleClickPlayAgain()}
             >
               Play again!
             </button>
@@ -309,4 +310,17 @@ const checkRim = (arr) => {
   return true;
 };
 
-export default Game;
+const mapStateToProps = (state) => ({
+  game: state.game,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleClickPlayAgain: () => {
+    dispatch(actions.clickPlayAgain());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Game);

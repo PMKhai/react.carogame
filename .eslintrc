@@ -40,6 +40,7 @@
         "react/prop-types": "off",
         "react/require-default-props": "off",
         "react/sort-comp": "off",
+        "react/destructuring-assignment": "off",
         "max-len": "off",
         "no-case-declarations": "off",
         "no-console": "off",
@@ -52,6 +53,7 @@
         "prefer-promise-reject-errors": "off",
         "arrow-parens": "off",
         "linebreak-style": "off",
-        "operator-linebreak": "off"
+        "operator-linebreak": "off",
+        "comma-dangle": "off"
     }
 }
