@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Square from './Square';
-import './Game.css';
+import '../containers/Game.css';
 
 class Board extends Component {
-  renderSquare = i => {
+  renderSquare = (i) => {
     const { result, onClick, squares } = this.props;
 
     const results = checkValueExistInResultArray(result, i);
@@ -17,7 +17,7 @@ class Board extends Component {
     );
   };
 
-  renderSquares = n => {
+  renderSquares = (n) => {
     const squares = [];
     for (let i = n; i < n + 20; i += 1) {
       squares.push(this.renderSquare(i));
@@ -25,13 +25,13 @@ class Board extends Component {
     return squares;
   };
 
-  renderRows = i => (
+  renderRows = (i) => (
     <div className="board-row" key={i}>
       {this.renderSquares(i)}
     </div>
   );
 
-  renderBoad = n => {
+  renderBoad = (n) => {
     const rows = [];
     for (let i = 0; i <= n; i += 20) {
       rows.push(this.renderRows(i));
