@@ -19,7 +19,6 @@ const reducer = (state = initialStates, action) => {
   switch (action.type) {
     case types.CLICK_PLAY_AGAIN:
       return {
-        ...state,
         history: [
           {
             squares: Array(400).fill(null),
@@ -39,8 +38,8 @@ const reducer = (state = initialStates, action) => {
       const { winner } = state;
       const { xIsNext } = state;
 
-      const historys = history.slice(0, stepNumber + 1);
-      const current = historys[historys.length - 1];
+      const histories = history.slice(0, stepNumber + 1);
+      const current = histories[histories.length - 1];
       const squares = current.squares.slice();
       const i = action.index;
 
@@ -51,7 +50,7 @@ const reducer = (state = initialStates, action) => {
 
       let newState = {
         ...state,
-        history: history.concat([
+        history: histories.concat([
           {
             squares,
             x: Math.floor(i / 20 + 1),
@@ -59,7 +58,7 @@ const reducer = (state = initialStates, action) => {
           },
         ]),
         xIsNext: !xIsNext,
-        stepNumber: history.length,
+        stepNumber: histories.length,
         display: null,
       };
 
@@ -70,6 +69,7 @@ const reducer = (state = initialStates, action) => {
       return newState;
     case types.JUMP_TO:
       const { step } = action;
+      console.log(step);
       return {
         ...state,
         stepNumber: step,
