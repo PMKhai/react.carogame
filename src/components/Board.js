@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Square from './Square';
-import '../containers/Game.css';
+import './Game.css';
 
 class Board extends Component {
   renderSquare = (i) => {

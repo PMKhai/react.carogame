@@ -1,5 +1,5 @@
 import React from 'react';
-import '../containers/Game.css';
+import './Game.css';
 
 function Square(props) {
   const { win, onClick, value } = props;
