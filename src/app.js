@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import Game from './containers/Game';
+import Game from './containers/game';
 import LoginForm from './components/loginform';
 import RegisterForm from './components/registerform';
 
