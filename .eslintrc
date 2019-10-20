@@ -54,6 +54,7 @@
         "arrow-parens": "off",
         "linebreak-style": "off",
         "operator-linebreak": "off",
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "implicit-arrow-linebreak": "off"
     }
 }
