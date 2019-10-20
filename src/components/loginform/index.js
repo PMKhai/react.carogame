@@ -42,7 +42,12 @@ class LoginForm extends Component {
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
-            <Button variant="primary" type="submit" style={{ width: '100%' }}>
+            <Button
+              variant="primary"
+              type="submit"
+              style={{ width: '100%' }}
+              onClick={() => this.props.onClickButton()}
+            >
               Login
             </Button>
           </Form>

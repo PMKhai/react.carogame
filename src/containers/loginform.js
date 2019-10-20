@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => ({
   onChangePassword: (password) => {
     dispatch(actions.onChangePassworrd(password));
   },
+  onClickButton: () => {
+    dispatch(actions.fetchDataLogin());
+  },
 });
 
 export default connect(
