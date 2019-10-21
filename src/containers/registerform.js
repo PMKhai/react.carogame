@@ -11,6 +11,7 @@ const mapDispatchToProps = (dispatch) => ({
   onChangePassword: (password) => dispatch(actions.onChangePassword(password)),
   onChangeRepassword: (repassword) =>
     dispatch(actions.onChangeRepassword(repassword)),
+  onClickButton: () => dispatch(actions.fetchDataRegister()),
 });
 
 export default connect(

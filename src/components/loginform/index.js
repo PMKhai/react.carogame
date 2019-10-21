@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 class LoginForm extends Component {
@@ -39,9 +40,6 @@ class LoginForm extends Component {
                 onChange={(e) => this.props.onChangePassword(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
             <Button
               variant="primary"
               type="submit"
@@ -51,6 +49,9 @@ class LoginForm extends Component {
               Login
             </Button>
           </Form>
+          <Link to="register" className="text-center">
+            Create new account
+          </Link>
         </Card>
       </div>
     );

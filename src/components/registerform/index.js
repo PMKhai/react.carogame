@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 class LoginForm extends Component {
@@ -49,10 +50,18 @@ class LoginForm extends Component {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" style={{ width: '100%' }}>
+            <Button
+              variant="primary"
+              type="submit"
+              style={{ width: '100%' }}
+              onClick={() => this.props.onClickButton()}
+            >
               Register
             </Button>
           </Form>
+          <Link to="login" className="text-center">
+            Do you have already an account?
+          </Link>
         </Card>
       </div>
     );

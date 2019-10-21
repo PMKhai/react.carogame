@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
+// eslint-disable-next-line import/no-cycle
+import { history } from './index';
 import Game from './containers/game';
 import LoginForm from './containers/loginform';
 import RegisterForm from './containers/registerform';
@@ -8,18 +10,12 @@ import GlobalLoading from './containers/globalloading';
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <GlobalLoading />
         <Switch>
-          <Route path="/login">
-            <LoginForm />
-          </Route>
-          <Route path="/register">
-            <RegisterForm />
-          </Route>
-          <Route path="/">
-            <Game />
-          </Route>
+          <Route path="/login" component={LoginForm} />
+          <Route path="/register" component={RegisterForm} />
+          <Route path="/" component={Game} />
         </Switch>
       </Router>
     );
