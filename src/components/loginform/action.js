@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as types from './constant';
 import { API_URL } from '../../constants';
+import * as loading from '../globalloading/action';
 
 const apiUrl = `${API_URL}user/login`;
 
@@ -21,9 +22,12 @@ export const fetchData = (user) => ({
 
 export const fetchDataLogin = () => async (dispatch, getState) => {
   const { loginForm } = getState();
-  const res = await axios.post(apiUrl, loginForm);
-  const { token } = res.data.data;
-
-  await localStorage.setItem('token', token);
-  await dispatch(fetchData(res.data));
+  dispatch(loading.showLoading());
+  const res = await axios.post(apiUrl, loginForm, { timeout: 2000 });
+  console.log(res);
+  if (res.status === 200) {
+    const { token } = res.data.data;
+    localStorage.setItem('token', token);
+  }
+  dispatch(loading.hideLoading());
 };

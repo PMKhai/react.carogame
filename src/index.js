@@ -8,7 +8,15 @@ import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancer =
+//   process.env.NODE_ENV !== 'production' &&
+//   typeof window === 'object' &&
+//   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ shouldHotReload: false })
+//     : compose;
+
+// const middleware = [thunk];
+// const enhancer = [applyMiddleware(...middleware)];
 
 const store = createStore(
   rootReducer,
