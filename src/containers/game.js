@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
   jumpTo: (move) => {
     dispatch(actions.jumpTo(move));
   },
+  fetchUser: () => {
+    dispatch(actions.fetchUserFromServer());
+  },
 });
 
 export default connect(

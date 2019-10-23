@@ -3,6 +3,11 @@ import Board from '../board/index';
 import './style.css';
 
 class Game extends Component {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillMount() {
+    this.props.fetchUser();
+  }
+
   render() {
     const { history } = this.props.game;
     const { stepNumber } = this.props.game;
@@ -12,6 +17,10 @@ class Game extends Component {
     const { display } = this.props.game;
     const current = history[stepNumber];
     const { squares } = current;
+    const { user } = this.props.game;
+
+    let email = null;
+    if (user !== null) email = user.email;
 
     const moves = history.map((step, move) => {
       const desc = move
@@ -59,6 +68,12 @@ class Game extends Component {
             </button>
             {moves}
           </ol>
+        </div>
+        <div>
+          <div>{email}</div>
+          <button type="button" className="mw-50">
+            Logout
+          </button>
         </div>
       </div>
     );

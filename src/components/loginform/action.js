@@ -22,12 +22,12 @@ export const fetchDataLogin = () => async (dispatch, getState) => {
   dispatch(loading.showLoading());
 
   const res = await axios.post(apiUrl, loginForm);
+  console.log(res);
   if (res.status === 200) {
     const { token } = res.data.data;
     localStorage.setItem('token', token);
     dispatch(loading.hideLoading());
     dispatch(push('/'));
-  } else {
-    dispatch(loading.hideLoading());
   }
+  dispatch(loading.hideLoading());
 };

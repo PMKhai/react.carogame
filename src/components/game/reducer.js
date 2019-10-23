@@ -13,12 +13,14 @@ const initialStates = {
   winner: null,
   result: null,
   display: null,
+  user: null,
 };
 
 const reducer = (state = initialStates, action) => {
   switch (action.type) {
     case types.CLICK_PLAY_AGAIN:
       return {
+        ...state,
         history: [
           {
             squares: Array(400).fill(null),
@@ -76,6 +78,8 @@ const reducer = (state = initialStates, action) => {
         xIsNext: step % 2 === 0,
         display: step,
       };
+    case types.FETCH_USER:
+      return { ...state, user: action.userInfo };
     default:
       return state;
   }
