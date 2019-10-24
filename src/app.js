@@ -6,6 +6,7 @@ import Game from './containers/game';
 import LoginForm from './containers/loginform';
 import RegisterForm from './containers/registerform';
 import GlobalLoading from './containers/globalloading';
+import Home from './components/home/index';
 
 class App extends Component {
   render() {
@@ -15,7 +16,8 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
-          <Route path="/" component={Game} />
+          <Route path="/game" component={Game} />
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     );

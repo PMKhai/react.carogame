@@ -25,11 +25,14 @@ export const fetchUser = (userInfo) => ({
 });
 
 export const fetchUserFromServer = () => async (dispatch) => {
-  const token = `Bearer ${localStorage.getItem('token')}`;
-  const res = await axios.get(apiUrl, {
-    headers: { Authorization: token },
-  });
-  console.log(res.data);
-  if (res.data !== null) dispatch(fetchUser(res.data.data));
-  else dispatch(push('login'));
+  try {
+    const token = `Bearer ${localStorage.getItem('token')}`;
+    const res = await axios.get(apiUrl, {
+      headers: { Authorization: token },
+    });
+    if (res.data !== null) dispatch(fetchUser(res.data.data));
+    else dispatch(push('login'));
+  } catch (err) {
+    dispatch(push('login'));
+  }
 };
