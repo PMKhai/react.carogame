@@ -31,7 +31,6 @@ export const fetchUserFromServer = () => async (dispatch) => {
       headers: { Authorization: token },
     });
     if (res.data !== null) dispatch(fetchUser(res.data.data));
-    else dispatch(push('login'));
   } catch (err) {
     dispatch(push('login'));
   }

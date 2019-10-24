@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
 class Home extends Component {
@@ -13,7 +14,9 @@ class Home extends Component {
           <Card.Title>minhkhai@gmail.com</Card.Title>
           <Card.Text>minhkhai@gmail.com</Card.Text>
           <Card.Text>male</Card.Text>
-          <Card.Link href="#">Edit</Card.Link>
+          <Link to="/editprofile" className="card-link">
+            Edit
+          </Link>
         </Card.Body>
       </Card>
     );

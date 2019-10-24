@@ -7,6 +7,7 @@ import LoginForm from './containers/loginform';
 import RegisterForm from './containers/registerform';
 import GlobalLoading from './containers/globalloading';
 import Home from './components/home/index';
+import EditProfile from './components/editprofile/index';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
           <Route path="/game" component={Game} />
+          <Route path="/editprofile" component={EditProfile} />
           <Route path="/" component={Home} />
         </Switch>
       </Router>

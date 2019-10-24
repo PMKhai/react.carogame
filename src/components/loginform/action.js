@@ -17,17 +17,21 @@ export const onChangePassworrd = (password) => ({
 });
 
 export const fetchDataLogin = () => async (dispatch, getState) => {
-  const { loginForm } = getState();
+  try {
+    const { loginForm } = getState();
 
-  dispatch(loading.showLoading());
+    dispatch(loading.showLoading());
 
-  const res = await axios.post(apiUrl, loginForm);
-  console.log(res);
-  if (res.status === 200) {
+    const res = await axios.post(apiUrl, loginForm);
+    console.log(res);
+
     const { token } = res.data.data;
     localStorage.setItem('token', token);
+
     dispatch(loading.hideLoading());
     dispatch(push('/'));
+  } catch (err) {
+    console.log(err);
+    dispatch(loading.hideLoading());
   }
-  dispatch(loading.hideLoading());
 };
