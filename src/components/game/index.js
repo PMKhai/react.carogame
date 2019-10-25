@@ -8,6 +8,11 @@ class Game extends Component {
     this.props.fetchUser();
   }
 
+  // constructor(props) {
+  //   super(props);
+  //   this.props.fetchUser();
+  // }
+
   render() {
     const { history } = this.props.game;
     const { stepNumber } = this.props.game;

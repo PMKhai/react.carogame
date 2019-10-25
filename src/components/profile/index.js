@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap';
 
 class Home extends Component {
   render() {
+    const { email, gender } = this.props;
     return (
       <Card style={{ width: '18rem', textAlign: 'center' }}>
         <Card.Img
@@ -12,8 +13,8 @@ class Home extends Component {
         />
         <Card.Body>
           <Card.Title>minhkhai@gmail.com</Card.Title>
-          <Card.Text>minhkhai@gmail.com</Card.Text>
-          <Card.Text>male</Card.Text>
+          <Card.Text>{email}</Card.Text>
+          <Card.Text>{gender}</Card.Text>
           <Link to="/editprofile" className="card-link">
             Edit
           </Link>

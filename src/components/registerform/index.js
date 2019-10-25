@@ -11,7 +11,7 @@ class LoginForm extends Component {
   render() {
     const { email, password, repassword } = this.props.registerForm;
     return (
-      <div className="login">
+      <div className="login d-flex justify-content-center">
         <Card style={{ width: '30%', padding: '10px' }}>
           <Form
             onSubmit={(e) => {
@@ -26,9 +26,6 @@ class LoginForm extends Component {
                 value={email}
                 onChange={(e) => this.props.onChangeEmail(e.target.value)}
               />
-              <Form.Text className="text-muted">
-                We will never share your email with anyone else.
-              </Form.Text>
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">

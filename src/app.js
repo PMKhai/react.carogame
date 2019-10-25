@@ -6,7 +6,7 @@ import Game from './containers/game';
 import LoginForm from './containers/loginform';
 import RegisterForm from './containers/registerform';
 import GlobalLoading from './containers/globalloading';
-import Home from './components/home/index';
+import Home from './containers/home';
 import EditProfile from './components/editprofile/index';
 
 class App extends Component {
