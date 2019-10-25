@@ -5,6 +5,7 @@ import loginForm from '../components/loginform/reducer';
 import registerForm from '../components/registerform/reducer';
 import globalLoading from '../components/globalloading/reducer';
 import home from '../components/home/reducer';
+import editProfile from '../components/editprofile/reducer';
 
 const rootReducer = (history) =>
   combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = (history) =>
     registerForm,
     globalLoading,
     home,
+    editProfile,
   });
 
 export default rootReducer;

@@ -7,7 +7,7 @@ import LoginForm from './containers/loginform';
 import RegisterForm from './containers/registerform';
 import GlobalLoading from './containers/globalloading';
 import Home from './containers/home';
-import EditProfile from './components/editprofile/index';
+import EditProfile from './containers/editprofile';
 
 class App extends Component {
   render() {
