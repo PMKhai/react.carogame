@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { push } from 'connected-react-router';
-import { API_URL, ME } from '../../constants';
+import { API_URL, ME, UPDATE } from '../../constants';
 import * as types from './constant';
+import * as loading from '../globalloading/action';
 
 const apiUrlGetProfile = `${API_URL}${ME}`;
-
+const apiUrlUpdateProfile = `${API_URL}${UPDATE}`;
 export const fetchUser = (userInfo) => ({
   type: types.FETCH_USER_FOR_EDIT,
   userInfo,
@@ -29,5 +30,24 @@ export const fetchUserFromServer = () => async (dispatch) => {
     if (res.data !== null) dispatch(fetchUser(res.data.data));
   } catch (err) {
     dispatch(push('login'));
+  }
+};
+
+export const handleClickUpdate = () => async (dispatch, getState) => {
+  const { editProfile } = getState();
+  console.log(editProfile);
+  const token = `Bearer ${localStorage.getItem('token')}`;
+
+  dispatch(loading.showLoading());
+
+  try {
+    const res = await axios.put(apiUrlUpdateProfile, editProfile, {
+      headers: { Authorization: token },
+    });
+    console.log(res.data);
+    dispatch(loading.hideLoading());
+    dispatch(push('/'));
+  } catch (error) {
+    dispatch(loading.hideLoading());
   }
 };

@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actions.handleChooseMaleGender(gender)),
   handleChooseFemale: (gender) =>
     dispatch(actions.handleChooseFemaleGender(gender)),
+  handleClickUpdate: () => dispatch(actions.handleClickUpdate()),
 });
 
 export default connect(

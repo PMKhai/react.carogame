@@ -21,6 +21,7 @@ class EditProfile extends Component {
       // eslint-disable-next-line no-unused-expressions
       gender === true ? (male = 'true') : (female = 'true');
     }
+
     return (
       <div className="d-flex justify-content-center m-5">
         <Card style={{ width: '18rem', textAlign: 'center', padding: '10px' }}>
@@ -67,8 +68,14 @@ class EditProfile extends Component {
                 />
               </div>
             </Form.Group>
-
-            <Button type="button" variant="outline-primary">
+            <Button type="button" variant="dark" className="m-2">
+              Cancel
+            </Button>
+            <Button
+              type="button"
+              variant="primary"
+              onClick={() => this.props.handleClickUpdate()}
+            >
               Update
             </Button>
           </Form>

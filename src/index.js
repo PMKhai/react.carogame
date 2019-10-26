@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createBrowserHistory } from 'history';
@@ -14,9 +14,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const history = createBrowserHistory();
 
+const composeEnhancers =
+  (typeof window !== 'undefined' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
+
 const store = createStore(
   rootReducer(history),
-  applyMiddleware(thunk, routerMiddleware(history))
+  composeEnhancers(applyMiddleware(thunk, routerMiddleware(history)))
 );
 
 ReactDOM.render(
