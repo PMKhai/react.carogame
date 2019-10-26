@@ -35,3 +35,38 @@ export const fetchUserFromServer = () => async (dispatch) => {
     dispatch(push('login'));
   }
 };
+
+export const botPlay = (i) => (dispatch, getState) => {
+  dispatch(clickSquare(i));
+
+  const { game } = getState();
+  const { history, stepNumber } = game;
+  const board = history[stepNumber];
+  const indexForBot = findTheEmptySquare(board.squares, i);
+
+  dispatch(clickSquare(indexForBot));
+};
+
+const findTheEmptySquare = (board, i) => {
+  let x = i;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    if (board[x + 1] === null && x + 1 >= 0 && x + 1 <= 399) return x + 1;
+    if (board[x - 1] === null && x - 1 >= 0 && x - 1 <= 399) return x - 1;
+    if (board[x + 20] === null && x + 20 >= 0 && x + 20 <= 399) return x + 20;
+    if (board[x - 20] === null && x - 20 >= 0 && x - 20 <= 399) return x - 20;
+    if (board[x + 20 + 1] === null && x + 20 + 1 >= 0 && x + 20 + 1 <= 399) {
+      return x + 20 + 1;
+    }
+    if (board[x - 20 + 1] === null && x - 20 + 1 >= 0 && x - 20 + 1 <= 399) {
+      return x - 20 + 1;
+    }
+    if (board[x + 20 - 1] === null && x + 20 - 1 >= 0 && x + 20 - 1 <= 399) {
+      return x + 20 - 1;
+    }
+    if (board[x - 20 - 1] === null && x - 20 - 1 >= 0 && x - 20 - 1 <= 399) {
+      return x - 20 - 1;
+    }
+    x += 1;
+  }
+};

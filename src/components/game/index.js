@@ -56,7 +56,7 @@ class Game extends Component {
       <div className="game">
         <div className="game-board">
           <Board
-            onClick={(i) => this.props.handleClick(i)}
+            onClick={(i) => this.props.botPlay(i)}
             squares={squares}
             result={result}
           />

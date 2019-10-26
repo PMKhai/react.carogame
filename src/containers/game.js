@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUser: () => {
     dispatch(actions.fetchUserFromServer());
   },
+  botPlay: (i) => dispatch(actions.botPlay(i)),
 });
 
 export default connect(
