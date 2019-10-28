@@ -12,9 +12,8 @@ class LoginForm extends Component {
     const { email, password } = this.props.loginForm;
     return (
       <div className="d-flex justify-content-center login">
-        <Card style={{ width: '30%', padding: '10px' }}>
+        <Card style={{ width: '30%', padding: '10px' }} className="text-center">
           <Form
-            className="text-center"
             onSubmit={(e) => {
               this.hendleSubmit(e);
             }}
@@ -46,15 +45,24 @@ class LoginForm extends Component {
               Login
             </Button>
             or
-            <Button
+            {/* <Button
               variant="danger"
-              type="submit"
+              type="Button"
               style={{ width: '100%' }}
               onClick={() => this.props.onClickButtonLoginGoogle()}
             >
               Google
-            </Button>
+            </Button> */}
           </Form>
+          <a
+            href="http://localhost:8000/user/auth/google"
+            className="btn btn-danger"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {' '}
+            Google
+          </a>
           <Link to="register" className="text-center">
             Create new account
           </Link>
