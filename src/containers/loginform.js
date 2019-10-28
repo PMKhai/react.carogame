@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   onClickButton: () => {
     dispatch(actions.fetchDataLogin());
   },
+  onClickButtonLoginGoogle: () => dispatch(actions.fetchDataLoginFromGoogle()),
 });
 
 export default connect(

@@ -14,6 +14,7 @@ class LoginForm extends Component {
       <div className="d-flex justify-content-center login">
         <Card style={{ width: '30%', padding: '10px' }}>
           <Form
+            className="text-center"
             onSubmit={(e) => {
               this.hendleSubmit(e);
             }}
@@ -27,7 +28,6 @@ class LoginForm extends Component {
                 onChange={(e) => this.props.onChangeEmail(e.target.value)}
               />
             </Form.Group>
-
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -44,6 +44,15 @@ class LoginForm extends Component {
               onClick={() => this.props.onClickButton()}
             >
               Login
+            </Button>
+            or
+            <Button
+              variant="danger"
+              type="submit"
+              style={{ width: '100%' }}
+              onClick={() => this.props.onClickButtonLoginGoogle()}
+            >
+              Google
             </Button>
           </Form>
           <Link to="register" className="text-center">
