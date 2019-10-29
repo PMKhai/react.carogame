@@ -46,7 +46,7 @@ class LoginForm extends Component {
               Login
             </Button>
             or
-            <LoginGoogle />
+            <LoginGoogle onRedirect={this.props.redirectAfterLogin} />
           </Form>
           <Link to="register" className="text-center">
             Create new account

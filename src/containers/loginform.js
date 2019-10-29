@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   onClickButton: () => {
     dispatch(actions.fetchDataLogin());
   },
+  redirectAfterLogin: () => dispatch(actions.redirectAfterLogin()),
 });
 
 export default connect(

@@ -33,3 +33,7 @@ export const fetchDataLogin = () => async (dispatch, getState) => {
     dispatch(loading.hideLoading());
   }
 };
+
+export const redirectAfterLogin = () => (dispatch) => {
+  dispatch(push('/'));
+};

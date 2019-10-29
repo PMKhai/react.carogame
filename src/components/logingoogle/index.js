@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import io from 'socket.io-client';
-import { push } from 'connected-react-router';
 import { API_URL, LOGIN_GOOGLE } from '../../constants';
 
 const url = `${API_URL}${LOGIN_GOOGLE}`;
@@ -12,7 +11,8 @@ class LoginGoogle extends Component {
     socket.on('google', (user) => {
       this.popup.close();
       localStorage.setItem('token', user.token);
-      push('/');
+      this.props.onRedirect();
+      console.log(this.props.onRedirect());
     });
   }
 
