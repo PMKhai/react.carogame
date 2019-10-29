@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import LoginGoogle from '../logingoogle/index';
 import './style.css';
 
 class LoginForm extends Component {
@@ -45,24 +46,8 @@ class LoginForm extends Component {
               Login
             </Button>
             or
-            {/* <Button
-              variant="danger"
-              type="Button"
-              style={{ width: '100%' }}
-              onClick={() => this.props.onClickButtonLoginGoogle()}
-            >
-              Google
-            </Button> */}
+            <LoginGoogle />
           </Form>
-          <a
-            href="http://localhost:8000/user/auth/google"
-            className="btn btn-danger"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {' '}
-            Google
-          </a>
           <Link to="register" className="text-center">
             Create new account
           </Link>

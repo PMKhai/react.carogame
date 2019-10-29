@@ -16,7 +16,8 @@ class Home extends Component {
   }
 
   render() {
-    const { email, gender } = this.props.home;
+    // eslint-disable-next-line object-curly-newline
+    const { email, gender, picture, name } = this.props.home;
     let displayGender = null;
     console.log(gender);
     if (gender !== null) {
@@ -25,7 +26,12 @@ class Home extends Component {
     }
     return (
       <div className="d-flex justify-content-center">
-        <Profile email={email} gender={displayGender} />
+        <Profile
+          email={email}
+          gender={displayGender}
+          picture={picture}
+          name={name}
+        />
       </div>
     );
   }

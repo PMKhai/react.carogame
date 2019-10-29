@@ -2,7 +2,9 @@ import * as types from './constant';
 
 const initialState = {
   email: '',
+  name: '',
   gender: true,
+  picture: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,6 +14,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         email: action.userInfo.email,
         gender: action.userInfo.gender,
+        name: action.userInfo.name,
+        picture: action.userInfo.picture,
       };
     default:
       return state;

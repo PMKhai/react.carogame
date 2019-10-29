@@ -4,6 +4,8 @@ const initialState = {
   id: '',
   email: '',
   gender: null,
+  name: '',
+  picture: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,6 +17,8 @@ const reducer = (state = initialState, action) => {
         id: action.userInfo._id,
         email: action.userInfo.email,
         gender: action.userInfo.gender,
+        name: action.userInfo.name,
+        picture: action.userInfo.picture,
       };
     case types.CHOOSE_MALE_GENDER:
       return { ...state, gender: true };

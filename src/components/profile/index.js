@@ -4,15 +4,20 @@ import { Card } from 'react-bootstrap';
 
 class Home extends Component {
   render() {
-    const { email, gender } = this.props;
+    // eslint-disable-next-line object-curly-newline
+    const { email, gender, picture, name } = this.props;
+    let avt;
+    if (picture) {
+      avt = picture;
+    } else {
+      avt =
+        'https://cdn3.f-cdn.com/contestentries/1483263/26039261/5c988ddb8ee9a_thumb900.jpg';
+    }
     return (
       <Card style={{ width: '18rem', textAlign: 'center' }}>
-        <Card.Img
-          variant="top"
-          src="https://cdn3.f-cdn.com/contestentries/1483263/26039261/5c988ddb8ee9a_thumb900.jpg"
-        />
+        <Card.Img variant="top" src={avt} />
         <Card.Body>
-          <Card.Title>{email}</Card.Title>
+          <Card.Title>{email || name}</Card.Title>
           <Card.Text>{gender}</Card.Text>
           <Link to="/editprofile" className="card-link">
             Edit
