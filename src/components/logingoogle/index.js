@@ -12,7 +12,6 @@ class LoginGoogle extends Component {
       this.popup.close();
       localStorage.setItem('token', user.token);
       this.props.onRedirect();
-      console.log(this.props.onRedirect());
     });
   }
 

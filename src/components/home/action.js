@@ -16,9 +16,16 @@ export const fetchUserFromServer = () => async (dispatch) => {
     const res = await axios.get(apiUrl, {
       headers: { Authorization: token },
     });
-    console.log(res.data);
     if (res.data !== null) dispatch(fetchUser(res.data.data));
   } catch (err) {
     dispatch(push('login'));
   }
+};
+
+export const clickPlayButtonPvE = () => (dispatch) => {
+  dispatch(push('/game'));
+};
+
+export const clickPlayButtonPvP = () => (dispatch) => {
+  dispatch(push('/gameonline'));
 };

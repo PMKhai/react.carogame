@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//  import { Form, Button, Card } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-// import './style.css';
+import PlayButton from '../playbutton/index';
 import Profile from '../profile/index';
 
 class Home extends Component {
@@ -26,12 +24,18 @@ class Home extends Component {
     }
     return (
       <div className="d-flex justify-content-center">
-        <Profile
-          email={email}
-          gender={displayGender}
-          picture={picture}
-          name={name}
-        />
+        <div>
+          <Profile
+            email={email}
+            gender={displayGender}
+            picture={picture}
+            name={name}
+          />
+          <PlayButton
+            onClickPlayButtonPvE={this.props.handleClickPlayButtonPvE}
+            onClickPlayButtonPvP={this.props.handleClickPlayButtonPvP}
+          />
+        </div>
       </div>
     );
   }

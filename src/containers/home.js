@@ -8,6 +8,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fecthUser: () => dispatch(actions.fetchUserFromServer()),
+  handleClickPlayButtonPvE: () => dispatch(actions.clickPlayButtonPvE()),
+  handleClickPlayButtonPvP: () => dispatch(actions.clickPlayButtonPvP()),
 });
 
 export default connect(
