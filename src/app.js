@@ -8,7 +8,7 @@ import RegisterForm from './containers/registerform';
 import GlobalLoading from './containers/globalloading';
 import Home from './containers/home';
 import EditProfile from './containers/editprofile';
-import GameOnline from './components/gameonline/index';
+import GameOnline from './containers/gameonline';
 
 class App extends Component {
   render() {

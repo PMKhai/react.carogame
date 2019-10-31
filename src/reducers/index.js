@@ -6,6 +6,7 @@ import registerForm from '../components/registerform/reducer';
 import globalLoading from '../components/globalloading/reducer';
 import home from '../components/home/reducer';
 import editProfile from '../components/editprofile/reducer';
+import chat from '../components/chat/reducer';
 
 const rootReducer = (history) =>
   combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = (history) =>
     globalLoading,
     home,
     editProfile,
+    chat,
   });
 
 export default rootReducer;

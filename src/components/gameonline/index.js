@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
-import Chat from '../chat/index';
+import io from 'socket.io-client';
+import Chat from '../../containers/chat';
 import Board from '../board/index';
+import { API_URL } from '../../constants';
+
+const socket = io(API_URL);
 
 class GameOnline extends Component {
+  constructor(props) {
+    super(props);
+
+    this.props.getRoomId(socket.id);
+    socket.on('findmatch', (data) => {
+      localStorage.setItem('roomId', data.roomId);
+    });
+  }
+
   render() {
     const result = [];
     const squares = [];
