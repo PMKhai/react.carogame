@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Card, Form, Button, Spinner } from 'react-bootstrap';
 import io from 'socket.io-client';
 import { API_URL } from '../../constants';
+import Message from '../message/index';
+import './style.css';
 
 const socket = io(API_URL);
 
@@ -18,8 +20,7 @@ class Chat extends Component {
     this.sendMessage = (e) => {
       e.preventDefault();
 
-      const room = localStorage.getItem('roomId'); // get room from local storage
-      socket.emit('subscribe', room);
+      const room = localStorage.getItem('roomId');
 
       socket.emit('SEND_MESSAGE', {
         room,
@@ -30,19 +31,51 @@ class Chat extends Component {
     };
   }
 
+  subcriptRoom = () => {
+    const room = localStorage.getItem('roomId');
+    socket.emit('subscribe', room);
+  };
+
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillMount() {
+    this.subcriptRoom();
+  }
+
   render() {
     const loading = false;
-    const { message } = this.props.chat;
+    const { message, messages, username } = this.props.chat;
 
     return (
-      <div className="w-25" style={{ height: '600px' }}>
+      <div className="w-25 " style={{ height: '600px' }}>
         <Card className="h-100 ml-2">
           <Card.Header>Chat</Card.Header>
+          <div className="scroll" style={{ height: '510px' }}>
+            {messages.map(
+              (message, index) =>
+                (message.author === username && (
+                  <Message
+                    key={index}
+                    color="info"
+                    display="right"
+                    message={message.message}
+                  />
+                )) ||
+                (message.author !== username && (
+                  <Message
+                    key={index}
+                    color="dark"
+                    display="left"
+                    message={message.message}
+                    author={message.author}
+                  />
+                ))
+            )}
+          </div>
           <Form className="d-inline clearfix">
             <Form.Control
               type="text"
               className="d-inline clearfix"
-              style={{ width: '249px' }}
+              style={{ width: '270px', outline: 'none' }}
               onChange={(e) => this.props.onChangeInputMessage(e.target.value)}
               value={message}
             />

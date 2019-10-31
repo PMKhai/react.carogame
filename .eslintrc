@@ -55,6 +55,7 @@
         "linebreak-style": "off",
         "operator-linebreak": "off",
         "comma-dangle": "off",
-        "implicit-arrow-linebreak": "off"
+        "implicit-arrow-linebreak": "off",
+        "react/no-array-index-key": "off"
     }
 }
