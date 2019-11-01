@@ -16,6 +16,12 @@ class GameOnline extends Component {
     });
   }
 
+  componentWillUnmount() {
+    const room = localStorage.getItem('roomId');
+    socket.emit('unsubscribe', room);
+    localStorage.removeItem('roomId');
+  }
+
   render() {
     const result = [];
     const squares = [];

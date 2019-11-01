@@ -14,6 +14,7 @@ class Chat extends Component {
     this.props.fetchUsername();
 
     socket.on('RECEIVE_MESSAGE', (data) => {
+      console.log(data);
       this.props.addMessage(data);
     });
 
@@ -21,6 +22,7 @@ class Chat extends Component {
       e.preventDefault();
 
       const room = localStorage.getItem('roomId');
+      socket.emit('subscribe', room);
 
       socket.emit('SEND_MESSAGE', {
         room,
@@ -37,8 +39,13 @@ class Chat extends Component {
   };
 
   // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.subcriptRoom();
+  }
+
+  componentWillUnmount() {
+    const room = localStorage.getItem('roomId');
+    socket.emit('unsubscribe', room);
   }
 
   render() {
