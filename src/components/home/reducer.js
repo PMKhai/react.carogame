@@ -3,7 +3,7 @@ import * as types from './constant';
 const initialState = {
   email: '',
   name: '',
-  gender: true,
+  gender: null,
   picture: '',
 };
 

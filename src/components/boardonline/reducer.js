@@ -1,95 +1,43 @@
 import * as types from './constant';
 
-const initialStates = {
-  history: [
-    {
-      squares: Array(400).fill(null),
-      x: null,
-      y: null,
-    },
-  ],
-  xIsNext: true,
-  stepNumber: 0,
-  winner: null,
+const initialState = {
+  squares: Array(400).fill(null),
   result: null,
-  display: null,
-  user: null,
+  isPlay: null,
+  username: '',
+  winner: null,
 };
 
-const reducer = (state = initialStates, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.CLICK_PLAY_AGAIN:
-      return {
-        ...state,
-        history: [
-          {
-            squares: Array(400).fill(null),
-            x: null,
-            y: null,
-          },
-        ],
-        xIsNext: true,
-        stepNumber: 0,
-        winner: null,
-        result: null,
-        display: null,
-      };
-    case types.CLICK_SQUARE:
-      const { stepNumber } = state;
-      const { history } = state;
-      const { winner } = state;
-      const { xIsNext } = state;
+    case types.CLICK_SQUARE_ONLINE:
+      const { squares, isPlay, winner } = state;
+      const { index, author } = action.data;
 
-      const histories = history.slice(0, stepNumber + 1);
-      const current = histories[histories.length - 1];
-      const squares = current.squares.slice();
-      const i = action.index;
-
-      if (winner || squares[i]) {
+      if (winner || squares[index]) {
         return state;
       }
-      squares[i] = xIsNext ? 'X' : 'O';
 
-      let newState = {
-        ...state,
-        history: histories.concat([
-          {
-            squares,
-            x: Math.floor(i / 20 + 1),
-            y: (i % 20) + 1,
-          },
-        ]),
-        xIsNext: !xIsNext,
-        stepNumber: histories.length,
-        display: null,
-      };
+      if (author === state.username) {
+        squares[index] = localStorage.getItem('myTroop');
+      } else squares[index] = localStorage.getItem('yourTroop');
 
-      const winners = calculateWinner(squares, i);
+      const winners = calculateWinner(squares, index);
       if (winners) {
-        newState = { ...newState, winner: winners[0], result: winners[1] };
-      }
-      return newState;
-    case types.JUMP_TO:
-      const { step } = action;
-      console.log(step);
-
-      if (step % 2 === 1) {
         return {
           ...state,
-          stepNumber: step + 1,
-          xIsNext: (step + 1) % 2 === 0,
-          display: step + 1,
+          squares,
+          isPlay: !isPlay,
+          winner: winners[0],
+          result: winners[1],
         };
       }
+      return { ...state, squares, isPlay: !isPlay };
 
-      return {
-        ...state,
-        stepNumber: step,
-        xIsNext: step % 2 === 0,
-        display: step,
-      };
-    case types.FETCH_USER:
-      return { ...state, user: action.userInfo };
+    case types.GET_USERNAME_BOARDONLINE:
+      return { ...state, username: action.username };
+    case types.GET_THE_STARTING_POSITION:
+      return { ...state, isPlay: action.position };
     default:
       return state;
   }

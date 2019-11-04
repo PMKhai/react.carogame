@@ -68,7 +68,12 @@ class EditProfile extends Component {
                 />
               </div>
             </Form.Group>
-            <Button type="button" variant="dark" className="m-2">
+            <Button
+              type="button"
+              variant="dark"
+              className="m-2"
+              onClick={() => this.props.handleClickCancel()}
+            >
               Cancel
             </Button>
             <Button

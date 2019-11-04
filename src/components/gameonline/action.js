@@ -10,6 +10,7 @@ export const getRoomId = (socketId) => async () => {
     await axios.get(fullUrl, {
       headers: { Authorization: token },
     });
+    // dispatch(loading.showLoading());
   } catch (error) {
     console.log(error);
   }

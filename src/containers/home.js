@@ -10,6 +10,7 @@ const mapDispatchToProps = (dispatch) => ({
   fecthUser: () => dispatch(actions.fetchUserFromServer()),
   handleClickPlayButtonPvE: () => dispatch(actions.clickPlayButtonPvE()),
   handleClickPlayButtonPvP: () => dispatch(actions.clickPlayButtonPvP()),
+  findMatch: (socketId) => dispatch(actions.getRoomId(socketId)),
 });
 
 export default connect(

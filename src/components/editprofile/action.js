@@ -51,3 +51,7 @@ export const handleClickUpdate = () => async (dispatch, getState) => {
     dispatch(loading.hideLoading());
   }
 };
+
+export const handleClickCancel = () => (dispatch) => {
+  dispatch(push('/'));
+};

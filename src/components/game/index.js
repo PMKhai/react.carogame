@@ -22,10 +22,6 @@ class Game extends Component {
     const { display } = this.props.game;
     const current = history[stepNumber];
     const { squares } = current;
-    const { user } = this.props.game;
-
-    let email = null;
-    if (user !== null) email = user.email;
 
     const moves = history.map((step, move) => {
       const desc = move
@@ -73,12 +69,6 @@ class Game extends Component {
             </button>
             {moves}
           </ol>
-        </div>
-        <div>
-          <div>{email}</div>
-          <button type="button" className="mw-50">
-            Logout
-          </button>
         </div>
       </div>
     );

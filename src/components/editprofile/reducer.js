@@ -3,6 +3,7 @@ import * as types from './constant';
 const initialState = {
   id: '',
   email: '',
+  sub: '',
   gender: null,
   name: '',
   picture: '',
@@ -16,6 +17,7 @@ const reducer = (state = initialState, action) => {
         // eslint-disable-next-line no-underscore-dangle
         id: action.userInfo._id,
         email: action.userInfo.email,
+        sub: action.userInfo.sub,
         gender: action.userInfo.gender,
         name: action.userInfo.name,
         picture: action.userInfo.picture,

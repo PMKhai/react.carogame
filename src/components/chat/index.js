@@ -18,6 +18,9 @@ class Chat extends Component {
       this.props.addMessage(data);
     });
 
+    const room = localStorage.getItem('roomId');
+    socket.emit('subscribe', room);
+
     this.sendMessage = (e) => {
       e.preventDefault();
 
