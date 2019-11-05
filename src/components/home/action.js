@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { push } from 'connected-react-router';
 import { API_URL, ME, FIND_MATCH } from '../../constants/index';
-// import * as loading from '../globalloading/action';
+import * as loading from '../globalloading/action';
 import * as types from './constant';
 
 const apiUrl = `${API_URL}${ME}`;
@@ -31,17 +31,17 @@ export const clickPlayButtonPvE = () => (dispatch) => {
 
 export const clickPlayButtonPvP = () => (dispatch) => {
   dispatch(push('/gameonline'));
-  // dispatch(loading.hideLoading());
+  dispatch(loading.hideLoading());
 };
 
-export const getRoomId = (socketId) => async () => {
+export const getRoomId = (socketId) => async (dispatch) => {
   try {
     const token = `Bearer ${localStorage.getItem('token')}`;
     const fullUrl = `${apiUrlFindmatch}/?socketId=${socketId}`;
     await axios.get(fullUrl, {
       headers: { Authorization: token },
     });
-    //  dispatch(loading.showLoading());
+    dispatch(loading.showLoading());
   } catch (error) {
     console.log(error);
   }

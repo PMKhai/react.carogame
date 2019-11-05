@@ -16,12 +16,16 @@ class GameOnline extends Component {
 
   render() {
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
+      <div>
+        <div className="d-flex justify-content-end">
+          <LogoutButton />
         </div>
-        <Chat />
-        <LogoutButton />
+        <div className="game">
+          <div className="game-board">
+            <Board />
+          </div>
+          <Chat />
+        </div>
       </div>
     );
   }

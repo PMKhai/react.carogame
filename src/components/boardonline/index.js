@@ -77,7 +77,7 @@ class BoardOnline extends Component {
         {displayLoser}
         <div>
           <div className="mb-1">
-            <Button variant="dark" className="mr-4 w-10">
+            <Button variant="dark" className="mr-2 w-10">
               Back home
             </Button>
             <Button
@@ -87,7 +87,7 @@ class BoardOnline extends Component {
             >
               I lose
             </Button>
-            <Button variant="info" className="mr-2 w-25">
+            <Button variant="info" className="mr-2">
               This match is tie!
             </Button>
             <Button variant="info" className=" w-25">

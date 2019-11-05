@@ -40,21 +40,27 @@ class Home extends Component {
       else if (gender === false) displayGender = 'Female';
     }
     return (
-      <div className="game">
-        <div>
-          <Profile
-            email={email}
-            gender={displayGender}
-            picture={picture}
-            name={name}
-          />
-          <PlayButton
-            onClickPlayButtonPvE={this.props.handleClickPlayButtonPvE}
-            onClickPlayButtonPvP={() => this.findMatch(socket.id)}
-          />
-        </div>
-        <div>
+      <div>
+        <div className="d-flex justify-content-end">
           <LogoutButton />
+        </div>
+        <div className="game">
+          <div>
+            <div className="mb-1">
+              <Profile
+                email={email}
+                gender={displayGender}
+                picture={picture}
+                name={name}
+              />
+            </div>
+            <div>
+              <PlayButton
+                onClickPlayButtonPvE={this.props.handleClickPlayButtonPvE}
+                onClickPlayButtonPvP={() => this.findMatch(socket.id)}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

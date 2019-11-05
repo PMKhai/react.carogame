@@ -10,11 +10,6 @@ class Game extends Component {
     this.props.fetchUser();
   }
 
-  // constructor(props) {
-  //   super(props);
-  //   this.props.fetchUser();
-  // }
-
   render() {
     const { history } = this.props.game;
     const { stepNumber } = this.props.game;
@@ -51,37 +46,39 @@ class Game extends Component {
       status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
     return (
-      <div className="game">
-        <div className="game-board">
-          <div className="mb-1">
-            <Button
-              variant="dark"
-              onClick={() => this.props.handleClickBackHome()}
-            >
-              Back home
-            </Button>
-          </div>
-          <Board
-            onClick={(i) => this.props.botPlay(i)}
-            squares={squares}
-            result={result}
-          />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <ol>
-            <button
-              type="button"
-              className="w-150"
-              onClick={() => this.props.handleClickPlayAgain()}
-            >
-              Play again!
-            </button>
-            {moves}
-          </ol>
-        </div>
-        <div>
+      <div>
+        <div className="d-flex justify-content-end">
           <LogoutButton />
+        </div>
+        <div className="game">
+          <div className="game-board">
+            <div className="mb-1">
+              <Button
+                variant="dark"
+                onClick={() => this.props.handleClickBackHome()}
+              >
+                Back home
+              </Button>
+            </div>
+            <Board
+              onClick={(i) => this.props.botPlay(i)}
+              squares={squares}
+              result={result}
+            />
+          </div>
+          <div className="game-info">
+            <div>{status}</div>
+            <ol>
+              <button
+                type="button"
+                className="w-150"
+                onClick={() => this.props.handleClickPlayAgain()}
+              >
+                Play again!
+              </button>
+              {moves}
+            </ol>
+          </div>
         </div>
       </div>
     );

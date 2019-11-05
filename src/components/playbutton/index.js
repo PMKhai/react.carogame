@@ -9,15 +9,13 @@ class PlayButton extends Component {
           className="btn btn-secondary d-inline w-50 clearfix"
           onClick={this.props.onClickPlayButtonPvE}
         >
-          {' '}
-          PvE
+          Chơi với máy
         </Button>
         <Button
           className="btn btn-secondary d-inline w-50 clearfix"
           onClick={this.props.onClickPlayButtonPvP}
         >
-          {' '}
-          PvP
+          Chơi với đối thủ
         </Button>
       </div>
     );
