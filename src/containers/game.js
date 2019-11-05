@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actions.fetchUserFromServer());
   },
   botPlay: (i) => dispatch(actions.botPlay(i)),
+  handleClickBackHome: () => dispatch(actions.handleClichBackHomeButton()),
 });
 
 export default connect(

@@ -56,10 +56,10 @@ class Chat extends Component {
     const { message, messages, username } = this.props.chat;
 
     return (
-      <div className="w-25 " style={{ height: '600px' }}>
+      <div className="w-25 " style={{ height: '610px', marginTop: '40px' }}>
         <Card className="h-100 ml-2">
           <Card.Header>Chat</Card.Header>
-          <div className="scroll" style={{ height: '510px' }}>
+          <div className="scroll" style={{ height: '520px' }}>
             {messages.map(
               (message, index) =>
                 (message.author === username && (

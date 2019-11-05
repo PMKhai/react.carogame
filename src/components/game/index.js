@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import Board from '../board/index';
+import LogoutButton from '../../containers/logoutbutton';
 import './style.css';
 
 class Game extends Component {
@@ -51,6 +53,14 @@ class Game extends Component {
     return (
       <div className="game">
         <div className="game-board">
+          <div className="mb-1">
+            <Button
+              variant="dark"
+              onClick={() => this.props.handleClickBackHome()}
+            >
+              Back home
+            </Button>
+          </div>
           <Board
             onClick={(i) => this.props.botPlay(i)}
             squares={squares}
@@ -69,6 +79,9 @@ class Game extends Component {
             </button>
             {moves}
           </ol>
+        </div>
+        <div>
+          <LogoutButton />
         </div>
       </div>
     );

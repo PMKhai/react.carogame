@@ -71,7 +71,6 @@ const reducer = (state = initialStates, action) => {
       return newState;
     case types.JUMP_TO:
       const { step } = action;
-      console.log(step);
 
       if (step % 2 === 1) {
         return {

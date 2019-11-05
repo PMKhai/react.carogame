@@ -23,7 +23,7 @@ class EditProfile extends Component {
     }
 
     return (
-      <div className="d-flex justify-content-center m-5">
+      <div className="game m-5">
         <Card style={{ width: '18rem', textAlign: 'center', padding: '10px' }}>
           <Form
             onSubmit={(e) => {

@@ -6,6 +6,7 @@ const initialState = {
   isPlay: null,
   username: '',
   winner: null,
+  loser: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -38,6 +39,13 @@ const reducer = (state = initialState, action) => {
       return { ...state, username: action.username };
     case types.GET_THE_STARTING_POSITION:
       return { ...state, isPlay: action.position };
+    case types.LOSE_GAME:
+      const win = action.winner.troop === 'X' ? 'O' : 'X';
+      return {
+        ...state,
+        winner: win,
+        loser: action.winner.author,
+      };
     default:
       return state;
   }

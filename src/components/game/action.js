@@ -47,6 +47,11 @@ export const botPlay = (i) => (dispatch, getState) => {
   dispatch(clickSquare(indexForBot));
 };
 
+export const handleClichBackHomeButton = () => (dispatch) => {
+  dispatch(clickPlayAgain());
+  dispatch(push('/'));
+};
+
 const findTheEmptySquare = (board, i) => {
   let x = i;
   // eslint-disable-next-line no-constant-condition

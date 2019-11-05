@@ -34,3 +34,12 @@ export const getTheStartingPosition = (position) => ({
   type: types.GET_THE_STARTING_POSITION,
   position,
 });
+
+export const loseGame = (winner) => ({
+  type: types.LOSE_GAME,
+  winner,
+});
+
+// export const lose = (winner) => (dispatch) => {
+//   dispatch(loseGame(winner));
+// };

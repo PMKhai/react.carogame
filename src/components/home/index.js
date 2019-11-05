@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 import PlayButton from '../playbutton/index';
 import Profile from '../profile/index';
+import LogoutButton from '../../containers/logoutbutton';
 import { API_URL } from '../../constants';
 
 const socket = io(API_URL);
 
 class Home extends Component {
   // eslint-disable-next-line camelcase
-  // UNSAFE_componentWillMount() {
-  //   this.props.fecthUser();
-  // }
-
-  constructor(props) {
-    super(props);
+  UNSAFE_componentWillMount() {
     this.props.fecthUser();
   }
+
+  // constructor(props) {
+  //   super(props);
+  //   this.props.fecthUser();
+  // }
 
   findMatch = (socketId) => {
     this.props.findMatch(socketId);
@@ -39,7 +40,7 @@ class Home extends Component {
       else if (gender === false) displayGender = 'Female';
     }
     return (
-      <div className="d-flex justify-content-center">
+      <div className="game">
         <div>
           <Profile
             email={email}
@@ -51,6 +52,9 @@ class Home extends Component {
             onClickPlayButtonPvE={this.props.handleClickPlayButtonPvE}
             onClickPlayButtonPvP={() => this.findMatch(socket.id)}
           />
+        </div>
+        <div>
+          <LogoutButton />
         </div>
       </div>
     );

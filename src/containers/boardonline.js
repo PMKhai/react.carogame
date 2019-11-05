@@ -11,6 +11,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUsername: () => dispatch(actions.fetchUserFromServer()),
   getTheStartingPosition: (position) =>
     dispatch(actions.getTheStartingPosition(position)),
+  loseGame: (winner) => dispatch(actions.loseGame(winner)),
 });
 
 export default connect(
