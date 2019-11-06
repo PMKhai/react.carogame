@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   getTheStartingPosition: (position) =>
     dispatch(actions.getTheStartingPosition(position)),
   loseGame: (winner) => dispatch(actions.loseGame(winner)),
+  clickBackHomeButton: () => dispatch(actions.handleClichBackHomeButton()),
+  checkTieRequest: (data) => dispatch(actions.checkTieRequest(data)),
+  checkTie: () => dispatch(actions.checkTie()),
 });
 
 export default connect(

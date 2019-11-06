@@ -40,6 +40,32 @@ export const loseGame = (winner) => ({
   winner,
 });
 
-// export const lose = (winner) => (dispatch) => {
-//   dispatch(loseGame(winner));
-// };
+export const clearState = () => ({
+  type: types.CLEAR_STATE,
+});
+
+export const handleClichBackHomeButton = () => (dispatch) => {
+  dispatch(clearState());
+  dispatch(push('/'));
+};
+
+export const tie = () => ({ type: types.TIE });
+
+export const requestTies = () => ({ type: types.REQUEST_TIE });
+
+export const checkTieRequest = (data) => (dispatch, getState) => {
+  const { boardOnline } = getState();
+  const { username } = boardOnline;
+  const { author } = data;
+
+  if (author === username) dispatch(tie());
+  if (author !== username) dispatch(requestTies());
+};
+
+export const playAgain = () => ({ type: types.NEW_GAME });
+
+export const checkTie = () => (dispatch, getState) => {
+  const { boardOnline } = getState();
+  const { isTie, requestTie } = boardOnline;
+  if (isTie === requestTie && isTie === true) dispatch(playAgain());
+};

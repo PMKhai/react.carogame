@@ -5,6 +5,7 @@ const initialState = {
   name: '',
   gender: null,
   picture: '',
+  isLoading: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +17,16 @@ const reducer = (state = initialState, action) => {
         gender: action.userInfo.gender,
         name: action.userInfo.name,
         picture: action.userInfo.picture,
+      };
+    case types.SHOW_LOADING_WHEN_FIND_MATCH:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case types.HIDE_LOADING_WHEN_FIND_MATCH:
+      return {
+        ...state,
+        isLoading: false,
       };
     default:
       return state;

@@ -11,6 +11,8 @@ const mapDispatchToProps = (dispatch) => ({
   handleClickPlayButtonPvE: () => dispatch(actions.clickPlayButtonPvE()),
   handleClickPlayButtonPvP: () => dispatch(actions.clickPlayButtonPvP()),
   findMatch: (socketId) => dispatch(actions.getRoomId(socketId)),
+  hideLoading: () => dispatch(actions.hideLoadingFindMatch()),
+  showLoading: () => dispatch(actions.showLoadingFindMatch()),
 });
 
 export default connect(

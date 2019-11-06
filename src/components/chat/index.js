@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line object-curly-newline
 import { Card, Form, Button, Spinner } from 'react-bootstrap';
-import io from 'socket.io-client';
-import { API_URL } from '../../constants';
 import Message from '../message/index';
 import './style.css';
-
-const socket = io(API_URL);
+import socket from '../../socket';
 
 class Chat extends Component {
   constructor(props) {

@@ -7,6 +7,8 @@ const initialState = {
   username: '',
   winner: null,
   loser: '',
+  isTie: false,
+  requestTie: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,7 +35,13 @@ const reducer = (state = initialState, action) => {
           result: winners[1],
         };
       }
-      return { ...state, squares, isPlay: !isPlay };
+      return {
+        ...state,
+        squares,
+        isPlay: !isPlay,
+        isTie: false,
+        requestTie: false,
+      };
 
     case types.GET_USERNAME_BOARDONLINE:
       return { ...state, username: action.username };
@@ -46,6 +54,31 @@ const reducer = (state = initialState, action) => {
         winner: win,
         loser: action.winner.author,
       };
+    case types.CLEAR_STATE:
+      return {
+        squares: Array(400).fill(null),
+        result: null,
+        isPlay: null,
+        username: '',
+        winner: null,
+        loser: '',
+        isTie: false,
+        requestTie: false,
+      };
+    case types.TIE:
+      return { ...state, isTie: true };
+    case types.NEW_GAME:
+      return {
+        ...state,
+        squares: Array(400).fill(null),
+        result: null,
+        winner: null,
+        loser: '',
+        isTie: false,
+        requestTie: false,
+      };
+    case types.REQUEST_TIE:
+      return { ...state, requestTie: true };
     default:
       return state;
   }

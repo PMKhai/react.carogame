@@ -32,7 +32,7 @@ class Home extends Component {
 
   render() {
     // eslint-disable-next-line object-curly-newline
-    const { email, gender, picture, name } = this.props.home;
+    const { email, gender, picture, name, isLoading } = this.props.home;
     let displayGender = null;
     console.log(gender);
     if (gender !== null && gender !== undefined) {
@@ -58,6 +58,9 @@ class Home extends Component {
               <PlayButton
                 onClickPlayButtonPvE={this.props.handleClickPlayButtonPvE}
                 onClickPlayButtonPvP={() => this.findMatch(socket.id)}
+                showLoading={this.props.showLoading}
+                hideLoading={this.props.hideLoading}
+                isLoading={isLoading}
               />
             </div>
           </div>
