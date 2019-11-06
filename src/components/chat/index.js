@@ -82,7 +82,7 @@ class Chat extends Component {
             <Form.Control
               type="text"
               className="d-inline clearfix"
-              style={{ width: '255px', outline: 'none' }}
+              style={{ width: '252px', outline: 'none' }}
               onChange={(e) => this.props.onChangeInputMessage(e.target.value)}
               value={message}
             />
